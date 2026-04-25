@@ -1,43 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login-Page | E-Shopping</title>
-    <script>
-        function welcome() {
-            window.open("file:///D:/Rushit%20Data/Projects/3d%20Login%20Page/Submit.html")
-        }
-    
-    </script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="logo.jpg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOUMaterial | Silver Oak University Notes</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="box">
-        <div class="elements E-Shopping"></div>
-        <div class="elements name">
-            <h2>Login Page</h2>
-        </div>
-        <div class="elements content"><form action="">
-            <input type="text" placeholder="E-Mail">
-            <input type="password" placeholder="Password">
-            <button onclick="welcome()">Login</button>
-        </form></div>
-        <div class="card"></div>
+  <header class="site-header">
+    <div>
+      <p class="tag">Silver Oak University</p>
+      <h1>SOUMaterial</h1>
+      <p class="subtitle">MCA &amp; BCA (Hons.) Semester-wise Study Material</p>
     </div>
+    <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">🌙 Dark</button>
+  </header>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" 
-    integrity="sha512-wC/cunGGDjXSl9OHUH0RuqSyW4YNLlsPwhcLxwWW1CR4OeC2E1xpcdZz2DeQkEmums41laI+eGMw95IJ15SS3g==" 
-    crossorigin="anonymous" 
-    referrerpolicy="no-referrer"></script>
-    <script>
-              VanillaTilt.init(document.querySelector(".box"), {
-        max: 25,
-        speed: 400,
-        glare: true,
-      });
-    </script>
+  <main class="container">
+    <section class="intro card">
+      <h2>Your semester resources, all in one place</h2>
+      <p>
+        Download notes, assignments, practical files, and previous papers for every semester.
+        Inspired layout from sounotes with a refreshed SOUMaterial look and custom color style.
+      </p>
+      <div class="cta-row">
+        <button id="toggleSchedule" class="btn-primary">Show Timings &amp; Timetable</button>
+      </div>
+    </section>
 
+    <section class="grid two-col">
+      <article class="card">
+        <h3>MCA Material</h3>
+        <ul class="semester-list">
+          <li><a href="#">Semester 1 Notes &amp; PDFs</a></li>
+          <li><a href="#">Semester 2 Notes &amp; PDFs</a></li>
+          <li><a href="#">Semester 3 Notes &amp; PDFs</a></li>
+          <li><a href="#">Semester 4 Notes &amp; PDFs</a></li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>BCA (Hons.) Material</h3>
+        <ul class="semester-list">
+          <li><a href="#">Semester 1 Notes &amp; PDFs</a></li>
+          <li><a href="#">Semester 2 Notes &amp; PDFs</a></li>
+          <li><a href="#">Semester 3 Notes &amp; PDFs</a></li>
+          <li><a href="#">Semester 4 Notes &amp; PDFs</a></li>
+          <li><a href="#">Semester 5 Notes &amp; PDFs</a></li>
+          <li><a href="#">Semester 6 Notes &amp; PDFs</a></li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="schedulePanel" class="card schedule hidden" aria-hidden="true">
+      <h3>Class Timings &amp; Timetable</h3>
+      <p class="note">Click again to hide this section.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>09:30 - 10:30</th>
+              <th>10:30 - 11:30</th>
+              <th>11:45 - 12:45</th>
+              <th>01:15 - 02:15</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>Data Structure</td>
+              <td>Web Technology</td>
+              <td>DBMS</td>
+              <td>Lab</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>Python</td>
+              <td>Maths</td>
+              <td>OS</td>
+              <td>Seminar</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>Java</td>
+              <td>Web Technology</td>
+              <td>DBMS</td>
+              <td>Lab</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>Python</td>
+              <td>Data Structure</td>
+              <td>OS</td>
+              <td>Project</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>Maths</td>
+              <td>Java</td>
+              <td>Soft Skills</td>
+              <td>Revision</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 SOUMaterial • Made for Silver Oak University students</p>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const toggleBtn = document.getElementById('themeToggle');
+    const scheduleBtn = document.getElementById('toggleSchedule');
+    const schedulePanel = document.getElementById('schedulePanel');
+
+    toggleBtn.addEventListener('click', () => {
+      const isLight = root.getAttribute('data-theme') === 'light';
+      root.setAttribute('data-theme', isLight ? 'dark' : 'light');
+      toggleBtn.textContent = isLight ? '☀️ Light' : '🌙 Dark';
+    });
+
+    scheduleBtn.addEventListener('click', () => {
+      const hidden = schedulePanel.classList.toggle('hidden');
+      schedulePanel.setAttribute('aria-hidden', hidden ? 'true' : 'false');
+      scheduleBtn.textContent = hidden ? 'Show Timings & Timetable' : 'Hide Timings & Timetable';
+    });
+  </script>
 </body>
 </html>
